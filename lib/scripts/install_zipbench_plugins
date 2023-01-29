@@ -73,6 +73,12 @@ bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 echo doing rake commands for plugins
 bundle exec rake -T redmine:plugins:email_fetcher RAILS_ENV=production
 
+#
+# do some changes to plugin files
+#
+chmod a+x /opt/bitnami/redmine/plugins/redmine_zipbench/lib/scripts/*.sh
+
+
 
 #
 # end setups
