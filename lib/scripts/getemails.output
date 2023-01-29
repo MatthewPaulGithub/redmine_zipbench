@@ -1,0 +1,10 @@
+starting getemails.sh
+setting use_redmine
+Sun 29 Jan 2023 04:03:01 PM UTC
+bitnami
+setting profiles
+changing to redmine root
+/opt/bitnami/redmine
+doing rake
+out of rake
+Finished!

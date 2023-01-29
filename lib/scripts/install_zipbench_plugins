@@ -1,0 +1,106 @@
+#
+# script to install zipbench plugins all in one shot
+#
+
+#
+# this must run from the plugins directory
+# note that it git clones so it should error for already installed plugins
+#
+#
+# make sure we are in correct directory
+#
+echo STARTING!
+echo going to plugins directory
+cd /opt/bitnami/redmine/plugins
+pwd
+
+
+#
+# do some changes in main trunk and system
+#
+#
+echo changing some files to writeable
+sudo chown bitnami /opt/bitnami/redmine/log/production.log
+sudo chmod a+w /opt/bitnami/redmine/log/production.log
+sudo chmod a+w /opt/bitnami/redmine/db/schema.rb
+
+#
+# initial setups
+#
+# echo doing initial setups
+bundle config unset deployment
+
+
+#
+# get plugins
+#
+
+
+DIR="redmine_email_images"
+if [ ! -d "$DIR" ]; then
+	echo installing $DIR
+	git clone https://github.com/benstwa/$DIR $DIR
+else
+	echo $DIR already exists - skipping
+fi
+
+DIR="redmine_email_fetcher"
+if [ ! -d "$DIR" ]; then
+	echo installing $DIR
+	git clone https://github.com/MatthewPaulGithub/$DIR $DIR
+else
+	echo $DIR already exists - skipping
+fi
+
+
+
+
+#
+# do installs and migrates
+#
+echo going to redmine root
+cd /opt/bitnami/redmine
+pwd
+echo installing gems
+bundle install
+echo migrating plugins
+bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+
+
+#
+# do rakes and other post install/migrates
+#
+echo doing rake commands for plugins
+bundle exec rake -T redmine:plugins:email_fetcher RAILS_ENV=production
+
+
+#
+# end setups
+#
+echo bounce redmine
+sudo /opt/bitnami/ctlscript.sh restart apache
+
+
+#
+# and finally switch back to plugins
+#
+echo going to plugins directory
+cd /opt/bitnami/redmine/plugins
+echo FINISHED!
+
+#
+# post tasks manual
+#
+
+# redmine_fetch_emails
+# go get the getemails.sh file
+# place in plugins/scripts
+# do crontab -e
+# add to crontab -
+# * * * * * /opt/bitnami/redmine/scripts/getemails.sh > /opt/bitnami/redmine/scripts/apps$
+
+
+#
+# end
+#
+

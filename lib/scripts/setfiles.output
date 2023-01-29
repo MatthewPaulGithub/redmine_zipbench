@@ -1,0 +1,8 @@
+create new dirs under files
+year is 2023
+month is 01
+going to files dir
+2023 exists - skipping
+going to files/2023 dir
+01 exists - skipping
+Done!
