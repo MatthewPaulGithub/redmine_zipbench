@@ -36,22 +36,42 @@ bundle config unset deployment
 #
 
 
-DIR="redmine_email_images"
-if [ ! -d "$DIR" ]; then
-	echo installing $DIR
-	git clone https://github.com/benstwa/$DIR $DIR
+PLOC="https://github.com/MatthewPaulGithub/redmine_zipbench"
+PNAME="redmine_zipbench"
+if [ ! -d "$PNAME" ]; then
+	echo installing $PLOC
+	git clone $PLOC $PNAME
 else
-	echo $DIR already exists - skipping
+	echo $PNAME already exists - skipping
 fi
 
-DIR="redmine_email_fetcher"
-if [ ! -d "$DIR" ]; then
-	echo installing $DIR
-	git clone https://github.com/MatthewPaulGithub/$DIR $DIR
+
+PLOC="https://github.com/benstwa/redmine_email_images"
+PNAME="redmine_email_images"
+if [ ! -d "$PNAME" ]; then
+	echo installing $PLOC
+	git clone $PLOC $PNAME
 else
-	echo $DIR already exists - skipping
+	echo $PNAME already exists - skipping
 fi
 
+PLOC="https://github.com/MatthewPaulGithub/redmine_email_fetcher"
+PNAME="redmine_email_fetcher"
+if [ ! -d "$PNAME" ]; then
+	echo installing $PLOC
+	git clone $PLOC $PNAME
+else
+	echo $PNAME already exists - skipping
+fi
+
+PLOC="https://github.com/team888/redmine-issue_mail_with_attachments-plugin/tree/master/src/issue_mail_with_attachments"
+PNAME="issue_mail_with_attachments"
+if [ ! -d "$PNAME" ]; then
+	echo installing $PLOC
+	git clone $PLOC $PNAME
+else
+	echo $PNAME already exists - skipping
+fi
 
 
 
