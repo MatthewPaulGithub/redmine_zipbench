@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb6426e8-9c40-4ea4-b265-d56f567b117a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/scripts/install_zipbench_plugins" beforeDir="false" afterPath="$PROJECT_DIR$/lib/scripts/install_zipbench_plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
