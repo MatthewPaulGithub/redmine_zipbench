@@ -64,15 +64,17 @@ else
 	echo $PNAME already exists - skipping
 fi
 
-PLOC="https://github.com/team888/redmine-issue_mail_with_attachments-plugin/tree/master/src/issue_mail_with_attachments"
+PLOC="https://github.com/team888/redmine-issue_mail_with_attachments-plugin"
 PNAME="issue_mail_with_attachments"
 if [ ! -d "$PNAME" ]; then
 	echo installing $PLOC
-	git clone $PLOC $PNAME
+	git clone $PLOC temp1
+	cp -r /opt/bitnami/redmine/plugins/$PNAME/src/issue_mail_with_attachments temp2
+	rm -rdf /opt/bitnami/redmine/plugins/temp1
+	mv temp2 $PNAME
 else
 	echo $PNAME already exists - skipping
 fi
-
 
 
 #
